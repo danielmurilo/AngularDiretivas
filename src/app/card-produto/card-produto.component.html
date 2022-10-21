@@ -1,0 +1,15 @@
+<div class="card" *ngIf="mostrarProduto">
+    <img class="card-image-top" [src]="prod.imagem" alt="imagem produto">
+    <div class="card-body">
+        <h5 class="card-title">{{prod.nome}}</h5>
+        <h6 class="card-subtitle text-muted">R$ {{prod.preco}}</h6>
+
+        <span class="badge mb-1" [ngClass]="{'bg-danger': prod.estoque < 10, 'bg-warning': prod.estoque > 10 && prod.estoque < 30, 'bg-primary': prod.estoque > 30 && prod.estoque < 100, 'bg-success': prod.estoque > 100}">{{prod.estoque}} Unidades Restantes</span>
+        <p class="card-text text-truncated">{{prod.descricao}}</p>
+        <div class="card-buttons">
+            <button class="btn col-6 btn-warning me-1" *ngIf="mostrarProduto" (click)="esconderProduto()">Esconder</button>
+            <button class="btn col-5 btn-danger ms-1" (click)="onClickExcluir()">Excluir</button>
+        </div>
+        
+    </div>
+</div>
